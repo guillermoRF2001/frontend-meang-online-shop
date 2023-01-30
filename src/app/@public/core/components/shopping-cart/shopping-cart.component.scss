@@ -1,0 +1,90 @@
+@import './../../../../../assets/styles/prices.scss';
+
+/* The side navigation menu */
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1024; /* Stay on top */
+    top: 0; /* Stay at the top */
+    right: 0;
+    background-color: #1d1540; 
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  }
+  
+  /* The navigation menu links */
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #999999;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .sidenav a:hover {
+    color: #ffffff;
+  }
+  
+  /* Position and style the close button (top right corner) */
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+
+  #overlay {
+    z-index: 1021;
+      position: fixed;
+      display: none;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background-color: rgba($color: #000000, $alpha: 0.5);
+      cursor: initial;
+  }
+  
+  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+
+/*Cambios hechos por Guillermo*/
+h4 {
+  color: white;
+  margin-top: -30px;
+  margin-left: 25px;
+  font-weight: bold;
+}
+
+hr {
+  border-top: 4px dashed #412f8ef5;
+}
+
+.product {
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  background-color: #443198; 
+  border: 2px solid #766ca2;
+  color: white;
+}
+
+.price {
+  font-size: 20px;
+  color: red;
+}
+
+.button-padding {
+  padding-bottom: 30px;
+  margin-bottom: 40px;
+}

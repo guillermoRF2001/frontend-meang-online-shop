@@ -1,0 +1,72 @@
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" (click)="close()">&times;</a>
+  <h4>Carrito de compra</h4>
+  <hr />
+  <div class="card product" *ngIf="cart.total === 0">
+    No tienes elementos guardados en el carrito de compra. Añádelos desde los
+    productos con la opción de Añadir a la cesta
+  </div>
+  <div class="card product" *ngFor="let product of cart.products">
+    <div class="row">
+      <div class="col-lg-3">
+        <img
+          class="img-fluid"
+          src="{{ product.img }}"
+          alt="{{ product.name }}"
+        />
+        <button
+          (click)="clearItem(product)"
+          class="btn btn-sm btn-danger mt-2 float-left"
+        >
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="col-lg">
+        <div class="row">
+          <div class="col-lg-8">
+            <h6>{{ product.name }} ({{ product.description }})</h6>
+            <shop-qty-selector
+              [qty]="product.qty"
+              [stock]="product.stock"
+              (updateValue)="changeValue($event, product)"
+            ></shop-qty-selector>
+          </div>
+          <div class="col-lg">
+            <ng-template #noDiscount>
+              <div class="price">{{ currencySelect }} {{ product.price }}</div>
+            </ng-template>
+            <div class="price" *ngIf="product.discount; else noDiscount">
+              {{ currencySelect }} {{ product.priceDiscount | number }} <br />
+              <span> {{ currencySelect }} {{ product.price | number }} </span
+              ><br />
+              <span class="discount-pecentage">
+                ({{ product.discount }} %)
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="cart.total > 0">
+    <div class="row product">
+      <div class="col-lg-3">Subtotal ({{ cart.subtotal }})</div>
+      <div class="col-lg-9">
+        Total a pagar:
+        <span class="float-right price-total"
+          >{{ currencySelect }} {{ cart.total }}</span
+        >
+      </div>
+    </div>
+    <hr />
+    <div class="button-padding">
+    <button class="btn btn-success float-right mr-3" (click)="proccess()">
+      Tramitar Pedido
+    </button>
+    <button class="btn btn-danger float-right mr-2" (click)="clear()">
+      <i class="bx bxs-trash"></i>&nbsp; Vaciar carrito
+    </button>
+  </div>
+  </div>
+</div>
+<div id="overlay" (click)="close()"></div>

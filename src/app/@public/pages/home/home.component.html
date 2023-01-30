@@ -1,0 +1,27 @@
+<div class="container-fluid" *ngIf="!loading">
+  <shop-carousel-items [items]="items"></shop-carousel-items>
+  <app-product-category-list
+    *ngIf="listOne"
+    [title]="'Juegos de ps3'"
+    [productsList]="listOne"
+    [showDesc]="true"
+  ></app-product-category-list>
+  <app-product-category-list
+    *ngIf="listTwo"
+    [title]="'Juegos de PC'"
+    [productsList]="listTwo"
+    [showDesc]="true"
+  ></app-product-category-list>
+  <app-product-category-list
+    *ngIf="listFour"
+    [title]="'Juegos Android'"
+    [productsList]="listFour"
+    [showDesc]="true"
+  ></app-product-category-list>
+  <app-product-category-list
+    *ngIf="listThree"
+    [title]="'Juegos baratos'"
+    [productsList]="listThree"
+    [showDesc]="true"
+  ></app-product-category-list>
+</div>

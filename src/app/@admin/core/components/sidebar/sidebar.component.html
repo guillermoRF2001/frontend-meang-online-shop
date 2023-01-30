@@ -1,0 +1,16 @@
+<!-- Sidebar -->
+<div class="border-right" id="sidebar-wrapper">
+  <div class="sidebar-heading">
+    <a [routerLink]="['/']" routerLinkActive="router-link-active">Gamezonia</a>
+  </div>
+  <div class="list-group list-group-flush">
+    <a
+      [routerLink]="item.url"
+      *ngFor="let item of menuItems"
+      routerLinkActive="router-link-active"
+      class="list-group-item list-group-item-action bg-light"
+      ><i class="{{item.icon}}"></i> {{item.label}}</a
+    >
+  </div>
+</div>
+<!-- /#sidebar-wrapper -->

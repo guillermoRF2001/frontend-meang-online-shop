@@ -1,0 +1,66 @@
+<div class="container mt-5">
+    <div class="container mt-4" *ngIf="meData && available">
+        <div class="row">
+          <div class="col-md-4 order-md-2 mb-4">
+            <app-checkout-resume></app-checkout-resume>
+          </div>
+          <div class="col-md-8 order-md-1">
+            <h4 class="mb-3">Información de pago</h4>
+            <hr>
+            <form class="needs-validation" (ngSubmit)="sendData()" #forma="ngForm">
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label>Nombre</label><br/>
+                  <span>{{ meData.user.name }}</span>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label>Apellido/s</label><br/>
+                  <span>{{ meData.user.lastname }}</span>
+                </div>
+              </div>
+      
+              <div class="mb-3">
+                <label>Email</label><br/>
+                <span>{{ meData.user.email }}</span>
+              </div>
+      
+      
+              <div class="mb-3">
+                <label for="address">Dirección de entrega</label>
+                <textarea
+                  cols="50" rows="4"
+                  class="form-control"
+                  id="address"
+                  #addressData="ngModel"
+                  [(ngModel)]="address"
+                  placeholder="1234 Main St"
+                  name="address"
+                  [ngClass]="{'is-valid': !addressData.invalid, 'is-invalid': addressData.invalid}"
+                  required=""
+                ></textarea>
+                <div class="invalid-feedback">
+                  Please enter your shipping address.
+                </div>
+              </div>
+      
+              <hr class="mb-4" />
+      
+              <h4 class="mb-3">Información de la tarjeta</h4>
+      
+              <div class="row">
+                <div class="col-lg">
+                  <ng-stripe-pay-form
+                    [key]="key"
+                    [hidePostalCode]="true"
+                  ></ng-stripe-pay-form>
+                </div>
+              </div>
+              <hr class="mb-4" />
+            </form>
+              <button class="signup-btn" [disabled]="!forma.valid || block" (click)="sendData()" type="submit">
+                Continue to checkout
+              </button>
+          </div>
+        </div>
+      </div>
+</div>

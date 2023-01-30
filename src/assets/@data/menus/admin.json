@@ -1,0 +1,22 @@
+[
+    {
+        "url": "/admin",
+        "label": "Dashboard",
+        "icon": "fas fa-columns"
+    },
+    {
+        "url": "/admin/users",
+        "label": "Users",
+        "icon": "fas fa-users"
+    },
+    {
+        "url": "/admin/genres",
+        "label": "Genres",
+        "icon": "fas fa-archive"
+    },
+    {
+        "url": "/admin/tags",
+        "label": "Tags",
+        "icon": "bx bxs-purchase-tag"
+    }
+]

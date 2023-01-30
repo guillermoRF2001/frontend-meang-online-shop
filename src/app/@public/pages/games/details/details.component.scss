@@ -1,0 +1,36 @@
+@import './../../../../../assets/styles/prices.scss';
+
+.container {
+    margin-top: 10px;
+}
+
+.mini {
+    margin-bottom: 10px;
+}
+
+.mini:hover {
+    cursor: pointer;
+    opacity: 85%;
+}
+
+.productImformation {
+    margin-top: 50px;
+}
+
+.main-img, .more-games{
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.more-games {
+    max-height: 110px;
+}
+
+@media(max-width: 760px){
+    #screen-section {
+        display: none;
+    }
+}

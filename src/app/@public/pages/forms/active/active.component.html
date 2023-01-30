@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg"></div>
+    <div class="col-lg-6">
+      <form (ngSubmit)="add()" #forma="ngForm">
+        <h1>Activar usuario</h1>
+        <p>Introduzca el password y verificalo antes de activar el usuario.</p>
+        <label for="email"><b>Fecha de nacimiento</b></label>
+        <app-date-picker-legal-age
+          (newDate)="dataAsign($event)"
+        ></app-date-picker-legal-age>
+        <label for="password"><b>Contraseña</b></label>
+        <input
+          type="password"
+          #password="ngModel"
+          [(ngModel)]="values.password"
+          placeholder="Introduzca la contraseña"
+          name="password"
+          class="form-control"
+          [ngClass]="{
+            'is-valid': password.valid,
+            'is-invalid': password.invalid
+          }"
+          pattern="[a-zA-Z0-9.!&?_-ñÑ]{8,}"
+          required
+        />
+        <div
+          class="alert alert-danger"
+          *ngIf="password.invalid && (password.dirty || password.touched)"
+        >
+          <div *ngIf="password.errors.required">
+            Repita la contraseña por favor.
+          </div>
+          <div *ngIf="password.errors && password.errors.pattern">
+            La contraseña debe de medir minimo 8 caracteres y solo pueden usarse
+            letras, numeros y los siguiente caracteres especiales: [. ! & ? _ ].
+          </div>
+        </div>
+        <label for="passwordTwo"><b>Repetir contraseña</b></label>
+        <input
+          type="password"
+          #passwordTwo="ngModel"
+          [(ngModel)]="values.passwordTwo"
+          placeholder="Repita la contraseña"
+          name="passwordTwo"
+          class="form-control"
+          [ngClass]="{
+            'is-valid': passwordTwo.valid,
+            'is-invalid': passwordTwo.invalid
+          }"
+          pattern="[a-zA-Z0-9.!&?_-ñÑ]{8,}"
+          required
+        />
+        <div
+          class="alert alert-danger"
+          *ngIf="
+            passwordTwo.invalid && (passwordTwo.dirty || passwordTwo.touched)
+          "
+        >
+          <div *ngIf="passwordTwo.errors.required">
+            Introduzca una contraseña por favor.
+          </div>
+          <div *ngIf="passwordTwo.errors && passwordTwo.errors.pattern">
+            La contraseña debe de medir minimo 8 caracteres y solo pueden usarse
+            letras, numeros y los siguiente caracteres especiales: [. ! & ? _ ].
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg">
+            <button type="submit" [disabled]="!forma.valid" class="signup-btn">
+              Activar usuario.
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-lg"></div>
+  </div>
+</div>

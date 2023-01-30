@@ -1,0 +1,30 @@
+
+.custom-bg {
+    background-color: #2b2f33;
+}
+
+.dropdown-full-name {
+    cursor: default;
+    display: block;
+    width: 100%;
+    padding: .25rem 1.5rem;
+    clear: both;
+    font-weight: 500;
+    color: #7c8084;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: #e8f2ff;
+    border: 0;
+    
+}
+
+.dropdown-item, .fas {
+    cursor: pointer;
+}
+
+.badge.badge-success.notification {
+    position: relative;
+    top: -12px;
+    left: -2px;
+    border-radius: 10px;
+}

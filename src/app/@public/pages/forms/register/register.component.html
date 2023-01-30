@@ -1,0 +1,125 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg"></div>
+    <div class="col-lg-6">
+      <form (ngSubmit)="add()" #forma="ngForm">
+        <h1>Registro de usuario</h1>
+        <p>
+          Rellena los datos del formulario para efectuar el registro de tu
+          cuenta de usuario.
+        </p>
+        <hr />
+        <!--Nombre-->
+        <label for="name"><b>Nombre</b></label>
+        <input
+          type="text"
+          placeholder="Introduzca su nombre"
+          name="name"
+          class="form-control"
+          #name="ngModel"
+          [(ngModel)]="register.name"
+          [ngClass]="{ 'is-valid': name.valid, 'is-invalid': name.invalid }"
+          pattern="[A-Za-z]{3,20}"
+          required
+        />
+        <div class="alert alert-danger" *ngIf="name.invalid && (name.dirty || name.touched)">
+              Introduzca su nombre.
+        </div>
+
+        <!--Apellido-->
+        <label for="lastname"><b>Apellido /s</b></label>
+        <input
+          type="text"
+          placeholder="Introduzca su apellido"
+          name="lastname"
+          class="form-control"
+          #lastname="ngModel"
+          [(ngModel)]="register.lastname"
+          [ngClass]="{
+            'is-valid': lastname.valid,
+            'is-invalid': lastname.invalid
+          }"
+          required
+        />
+        <div class="alert alert-danger" *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)">
+          <div *ngIf="lastname.errors.required">
+              Introduzca su apellido.
+          </div>
+        </div>
+
+        <!--Fecha de nacimiento-->
+        <label for="email"><b>Fecha de nacimiento</b></label>
+        <app-date-picker-legal-age
+          (newDate)="dataAsign($event)"
+        ></app-date-picker-legal-age>
+
+        <!--Correo-->
+        <label for="email"><b>Email</b></label>
+        <input
+          type="text"
+          placeholder="Introduzca su Email"
+          name="email"
+          class="form-control"
+          #email="ngModel"
+          [(ngModel)]="register.email"
+          [ngClass]="{ 'is-valid': email.valid, 'is-invalid': email.invalid }"
+          [pattern]="emailPattern"
+          required
+        />
+        <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+          <div *ngIf="email.errors.required">
+              Introduzca un correo electrónico válido por favor.
+          </div>
+          <div *ngIf="email.errors && email.errors.pattern">
+              El correo electrónico no sigue el formato correcto. El correo solo puede tener letras, numeros y los siguiente caracteres especiales: [. ! & ? _ -].
+          </div>
+        </div>
+
+        <!--Contraseña-->
+        <label for="password"><b>Password</b></label>
+        <input
+          type="password"
+          placeholder="Introduzca la contraseña"
+          name="password"
+          class="form-control"
+          #password="ngModel"
+          [(ngModel)]="register.password"
+          [ngClass]="{
+            'is-valid': password.valid,
+            'is-invalid': password.invalid
+          }"
+          pattern="[a-zA-Z0-9.!&?_-ñÑ]{8,}"
+          required
+        />
+        <div class="alert alert-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
+          <div *ngIf="password.errors.required">
+              Introduzca una contraseña por favor.
+          </div>
+          <div *ngIf="password.errors && password.errors.pattern">
+            La contraseña debe de medir minimo 8 caracteres y solo pueden usarse letras, numeros y los siguiente caracteres especiales: [. ! & ? _ ].
+          </div>
+        </div>
+
+        <p>
+          By creating an account you agree to our
+          <a href="#" style="color: dodgerblue">Terms & Privacy</a>.
+        </p>
+        <p>
+          ¿Ya tiene una cuenta?
+          <a [routerLink]="['/login']" style="color: dodgerblue"
+            >Iniciar sesión</a
+          >.
+        </p>
+        <div class="row">
+          <div class="col-lg">
+            <button [disabled]="forma.invalid" type="submit" class="signup-btn">
+              Registrarse
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-lg"></div>
+  </div>
+</div>

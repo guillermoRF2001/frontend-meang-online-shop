@@ -1,0 +1,19 @@
+@import "./../../../pages/admin.component.scss";
+
+#menu-toggle {
+    color: grey;
+    background-color: transparent;
+    border-width: 2px;
+    border-color: rgb(155, 155, 155);
+    font-size: large;
+}
+
+.shadow {
+    -webkit-box-shadow: 2px 3px 3px 2px rgba(50, 50, 50, 0.73);
+    -moz-box-shadow:    2px 3px 3px 2px rgba(50, 50, 50, 0.73);
+    box-shadow:         2px 3px 3px 2px rgba(50, 50, 50, 0.73);
+}
+
+.dropdown-item:hover {
+    cursor: pointer
+}

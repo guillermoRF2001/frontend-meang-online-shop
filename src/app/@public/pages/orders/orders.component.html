@@ -1,0 +1,28 @@
+<div class="container" *ngIf="!loading">
+    <p>En este apartado encontraremos nuestros pedidos desde el más reciente</p>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Descripción</th>
+                <th scope="col">Precio ({{ currencySymbol }})</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Más detalles</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of charges">
+                <td>{{ data.description }}</td>
+                <td>{{ data.amount }}</td>
+                <td>{{ data.created | date:'yyyy-MM-dd hh:mm:ss'}}</td>
+                <td>
+                    <a href="{{data.receiptUrl}}" target="_blank">Factura</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="row">
+        <div class="col-lg text-center">
+            <button *ngIf="loadMoreBtn" class="btn btn-dark" (click)="loadChargesData()">Cargar más datos</button>
+        </div>
+    </div>
+</div>

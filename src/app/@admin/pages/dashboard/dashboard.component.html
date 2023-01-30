@@ -1,0 +1,7 @@
+<div class="container-fluid" *ngIf="!loading">
+    <div class="row">
+        <div class="col-lg-4" *ngFor="let item of items">
+            <app-general-info [item]="item"></app-general-info>
+        </div>
+    </div>
+</div>
